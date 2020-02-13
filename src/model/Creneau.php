@@ -1,5 +1,7 @@
 <?php
 
+namespace crazycharlyday\model;
+
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Query\Builder;
 
