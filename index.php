@@ -2,8 +2,9 @@
 session_start();
 
 use crazycharlyday\vue\VueAccueil;
+use crazycharlyday\vue\VueCreneau;
 use Illuminate\Database\Capsule\Manager as DB;
-use Slim\App;
+use Slim\Slim;
 use \Psr\Http\Message\ServerRequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;
 
@@ -14,14 +15,18 @@ $config = ['settings' => [
     'addContentLengthHeader' => false,
     'displayErrorDetails' => true,
 ]];
-$app = new App($config);
-$container = $app->getContainer();
+$app = new Slim($config);
 
 
 
 $app->get('/', function () {
     $vueIndex = new VueAccueil();
     $vueIndex->render(1);
+})->setName("Menu");
+
+$app->get('/creneaux', function () {
+    $vueCre = new VueCreneau();
+    $vueCre->render('LIST');
 })->setName("Menu");
 
 
